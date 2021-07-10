@@ -21,7 +21,7 @@ struct ContentView: View {
     
     
     @EnvironmentObject var viewRouter: ViewRouter
-    @State var user = Auth.auth().currentUser
+    @State var user = Auth.auth().currentUser?.uid
     let db = Firestore.firestore()
     let firebaseAuth = Auth.auth()
     
@@ -50,27 +50,56 @@ struct ContentView: View {
                 StripeSetupView()
             case "PaymentsSetupView":
                 PaymentsSetupView()
+            case "UpcomingMoves":
+                UpcomingMoves()
+            case "UpcomingMoveDetails":
+                UpcomingMoveDetails()
+            case "LandingPage":
+                LandingPage()
+            case "MoverSignUp":
+                MoverSignUp()
+            case "StepOneBusiness":
+                StepOneBusiness()
+            case "StepTwoBusiness":
+                StepTwoBusiness()
+            case "AddCustomerStepOne":
+                AddCustomerStepOne()
+            case "AddCustomerStepTwo":
+                AddCustomerStepTwo()
+            case "StepThreeBusiness":
+                StepThreeBusiness()
+            case "DeliveryRangeExceeded":
+                DeliveryRangeExceeded()
+            case "ViewDeliveryList":
+                ViewDeliveryList()
+            case "UpcomingDeliveries":
+                UpcomingDeliveries()
+            case "UpcomingDeliveryDetails":
+                UpcomingDeliveryDetails()
             default:
                 Login()
             }
         }.onAppear{
-            if user != nil{
-                 // self.viewRouter.currentView = "StepTwo"
-                 self.viewRouter.currentView = "AboutFilabusi"
-                         }else{
-                            // No user is signed in.
-                            do {
-                              try firebaseAuth.signOut()
-                                self.viewRouter.currentView = "Login"
-                            } catch let signOutError as NSError {
-                              print ("Error signing out: %@", signOutError)
-                            }
-                             
-                               
+            
+            let currentUser = Auth.auth().currentUser
+            currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
+                if error != nil {
+                // Handle error
+                do {
+                    try firebaseAuth.signOut()
+                    self.viewRouter.currentView = "Login"
+                } catch let signOutError as NSError {
+                    print ("Error signing out: %@", signOutError)
+                }
+                return;
+              }
 
-                         }
+              // token exists
+                self.viewRouter.currentView = "LandingPage"
+            }
+            
         }
-       
+        
     }
 }
 

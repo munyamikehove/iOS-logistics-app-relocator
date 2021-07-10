@@ -11,7 +11,6 @@ import Combine
 import Firebase
 import FirebaseAuth
 import FirebaseFirestore
-// import AlertX
 import AVKit
 import SDWebImageSwiftUI
 import ToastSwiftUI
@@ -331,7 +330,12 @@ struct Successful_Setup: View{
             
             Button(action: {
 
-                self.viewRouter.currentView = "StepThree"
+                if viewRouter.viewBeforePaymentIntent == "business"{
+                    self.viewRouter.currentView = "StepThreeBusiness"
+                }else{
+                    self.viewRouter.currentView = "StepThree"
+                }
+                
                 
             }) {
                 

@@ -129,8 +129,10 @@ struct FirstView_AboutUpscale: View{
             
          
             Button(action: {
+                
+                
                           
-                          //self.viewRouter.currentView = "DashboardView"
+                          self.viewRouter.currentView = "LandingPage"//"UpcomingMoves"
                           
                       }) {
                           

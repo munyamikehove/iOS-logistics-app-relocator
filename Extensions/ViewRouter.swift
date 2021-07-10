@@ -18,13 +18,13 @@ import UIKit
 import AVKit
 
 public protocol Fetcher {
-  func dataTaskPublisher(for url: URL) -> AnyPublisher<Data, URLError>
+    func dataTaskPublisher(for url: URL) -> AnyPublisher<Data, URLError>
 }
 
 extension URLSession: Fetcher {
-  public func dataTaskPublisher(for url: URL) -> AnyPublisher<Data, URLError> {
-    self.dataTaskPublisher(for: url).map(\.data).eraseToAnyPublisher()
-  }
+    public func dataTaskPublisher(for url: URL) -> AnyPublisher<Data, URLError> {
+        self.dataTaskPublisher(for: url).map(\.data).eraseToAnyPublisher()
+    }
 }
 
 class ViewRouter: NSObject, ASAuthorizationControllerPresentationContextProviding, ObservableObject {
@@ -46,9 +46,28 @@ class ViewRouter: NSObject, ASAuthorizationControllerPresentationContextProvidin
             objectWillChange.send()
             
         }
-       }
-        
-        
+    }
+    @Published var deliveryDay: Date = Date().addingTimeInterval(60 * 60 * 24 * 2){
+        didSet {
+            
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var displayDeliveryDay: String = ""{
+        didSet {
+            
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var inspectionDay: String = ""{
+        didSet {
+            
+            objectWillChange.send()
+            
+        }
+    }
     
     
     @Published var currentView: String = "Login" {
@@ -62,99 +81,191 @@ class ViewRouter: NSObject, ASAuthorizationControllerPresentationContextProvidin
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var OriginSelectorCounter: Int = 0{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var DestinationSelectorCounter: Int = 0{
         didSet {
             objectWillChange.send()
             
         }
-       }
-    
-    @Published var originAddress: String = ""{
+    }
+    @Published var ServiceSelectorCounter: Int = 0{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
+    @Published var currentBusinessAddress: String = ""{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var existingBusinessAccount: Bool = false{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var stepOneOrigin: String = ""{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    
+    @Published var whatBusinessStepOneSectionToShow: String = "main"{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var originAddress: String = "Move-out address here"{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var OriginBusinessAddress: String = "Dispatch address here"{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    
     @Published var originAddressLat: Double = 0.0{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var originAddressLng: Double = 0.0{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     
-    @Published var destinationAddress: String = ""{
+    @Published var destinationAddress: String = "Move-in address here"{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var destinationAddressLat: Double = 0.0{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var userID: String = ""{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var destinationAddressLng: Double = 0.0{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var shouldOpenPlacePicker = false{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var placePickerButton: String = ""{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var placePickerString: String = ""{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var placeIDOrigin: String = ""{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var placeIDDestination: String = ""{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
+    @Published var deliveryListOrigin: String = ""{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    
+    @Published var userMoves = [individualMoves(documentID:"test",originAddress:"test",destinationAddress:"test",moveEndTime:"test",moveDate:"test")]{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var userDeliveries = [individualDeliveries( documentID:"test",originAddress:"test",numberOfDeliveries:"test",deliveryTime:"test",deliveryDate:"test")]{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
     @Published var Tm2 :[String:Int] = [:]
     @Published var Tm3 :[String:Int] = [:]
+    @Published var deliveryCostPerCustomer :[String:Double] = [:]
     
     @Published var TruckDataPrimary = [
         TruckPrimary(itemName: "Other Items", itemCount: 0)
     ]{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    
+    @Published var BusinessCustomersList = [
+        BusinessDeliveryCustomers(name: "Placeholder", customerID: "Placeholder", customerAddress:"Placeholder",deliveryNotes:"Placeholder",customerAddressPlaceID:"Placeholder"),
+    ]{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var selectedCustomers: [String:Any] = [:]{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var itemsInTruckDBPush: [String:Any] = [:]{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    
+    @Published var fromPaymentTrigger: Bool = false{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    
+    @Published var stepThreePricingTriggered: Bool = false{
         didSet {
             objectWillChange.send()
             
@@ -165,165 +276,292 @@ class ViewRouter: NSObject, ASAuthorizationControllerPresentationContextProvidin
             objectWillChange.send()
             
         }
-       }
+    }
+    @Published var minimumOrderAmount: Double = 50.00{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var viewBeforePaymentIntent: String = ""{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var currentMoveID: String = ""{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
     
     @Published var displayDestinationAddress: String = "Loading..."{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
+    @Published var appSectionOnDisplay: String = "House Moves"{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var menuItemSelection: String = "House Moves"{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var width = UIScreen.main.bounds.width - 90{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var x = -UIScreen.main.bounds.width + 90{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
     @Published var destinationType: String = ""{
-            didSet {
-                objectWillChange.send()
-                
-            }
-           }
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
     @Published var distanceFromMidtownToronto: Int = 0 {
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var displayMoveDate: String = ""{
-            didSet {
-                objectWillChange.send()
-                
-            }
-           }
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
     @Published var displayOriginAddress: String = "Loading..."{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var originToDestinationDistance: Int = 0 {
-            didSet {
-                objectWillChange.send()
-                
-            }
-           }
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
     @Published var originType: String = ""{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var displayEndTime: String = "4:30 PM"{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var movingDurationDisplay: String = ""{
         didSet {
             objectWillChange.send()
             
         }
-       }
-    @Published var movingCost: String = ""{
+    }
+    @Published var movingCost: String = "0.0"{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var hst: String = ""{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var totalCost: String = ""{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var dueToday: String = ""{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var dueOnMoveDay: String = ""{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var paymentAuthCode: String = ""{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var birthday: Date = Date(){
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var email: String = ""{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var lastName: String = ""{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var firstName: String = ""{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
+    @Published var customerDeliveryNotes: String = "Notes on Delivery: "{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var customerFirstName: String = ""{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var customerPhoneNumber: String = ""{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var whatBusinessCustomerCreationSectionToShow: String = "main"{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var customerDeliveryAddress: String = "Customer address here"{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var placeIDCustomer: String = ""{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var placeIDBusiness: String = ""{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
     @Published var RelocatorPayCurrentView: String = "Relocator Pay Setup"{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var cdIssuer: String = "default"{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var lastFour: String = "no payment method"{
         didSet {
             objectWillChange.send()
             
         }
-       }
-    @Published var whatSectionToShow: String = "main"{
+    }
+    @Published var whatSectionToShow: String = "loadView"{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
+    @Published var whatBusinessSectionToShow: String = "loadView"{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    
     @Published var pm: String = ""{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
     @Published var cust: String = ""{
         didSet {
             objectWillChange.send()
             
         }
-       }
+    }
+    @Published var totalDeliveryCost: Double = 0.0{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    
+    @Published var serviceTypeMovers: String = ""{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var serviceTypeVehicle: String = ""{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
     @Published var doesPaymentMethodExist: Bool = false{
         didSet {
             objectWillChange.send()
             
         }
-       }
-    
+    }
+    @Published var manPowerReq: String = ""{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var truckSizeInFeet: String = ""{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
+    @Published var businessPickupDisplayAddress: String = "Loading Address..."{
+        didSet {
+            objectWillChange.send()
+            
+        }
+    }
     // Unhashed nonce.
     fileprivate var currentNonce: String?
     
@@ -401,13 +639,13 @@ extension ViewRouter: ASAuthorizationControllerDelegate {
                     .getDocument { (document, error) in
                         if let document = document, document.exists {
                             self.AboutAppCounter = 1
-                            self.currentView = "AboutFilabusi"
+                            self.currentView = "LandingPage"
                             self.userID = (authResult?.user.uid)!
                             self.objectWillChange.send()
                         } else {
                             print("Document does not exist")
                             self.AboutAppCounter = 1
-                            self.currentView = "AboutFilabusi"
+                            self.currentView = "LandingPage"
                             self.userID = (authResult?.user.uid)!
                             self.objectWillChange.send()
                         }

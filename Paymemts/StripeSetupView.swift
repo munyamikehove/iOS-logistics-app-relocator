@@ -139,7 +139,11 @@ struct StripeSetupView: View {
                 
                 Button(action: {
                     
-                    self.viewRouter.currentView = "StepThree"
+                    if viewRouter.viewBeforePaymentIntent == "business"{
+                        self.viewRouter.currentView = "StepThreeBusiness"
+                    }else{
+                        self.viewRouter.currentView = "StepThree"
+                    }
                     
                 }) {
                     

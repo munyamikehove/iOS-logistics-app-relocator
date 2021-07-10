@@ -29,26 +29,30 @@ struct Login: View {
                 Spacer().frame(height: 150)
                 
                 Text("Relocator")
-                    .font(.system(size: 55))
-                    .fontWeight(.heavy)
+                    //.font(.system(size: 55))
+                    .font(.custom("Avenir Next Ultra Light", size: 55))
+                    //.fontWeight(.heavy)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading)
                     .padding(.top)
                 
-                Text("by Upscale.plus")
-                    .font(.title2)
-                    .fontWeight(.heavy)
+                Text("The Realtor Swiss Army Knife")
+                    .font(.custom("Avenir Next Regular", size: 18))
+                    //.font(.footnote)
+                    //.fontWeight(.heavy)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading)
                 
-                Spacer().frame(height: 150)
+                Spacer().frame(height: 100)
                 
-                Text("Relocator takes care of all your moving needs. All you have to do is pack and we will do the rest.")
-                    .fontWeight(.semibold)
+                Text("Relocator takes care of all staging, landscaping, renovation, cleaning and moving needed to sell a property.")
+                    .font(.custom("Avenir Next Regular", size: 25))
+                    //.fontWeight(.semibold)
                     .foregroundColor(.white)
-                    .padding()
+                    .padding(.all,10)
+                    
                 
                 Spacer()
                 
