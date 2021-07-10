@@ -9,11 +9,15 @@
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeIconFiles</key>
+			<array/>
 			<key>CFBundleTypeName</key>
-			<string>MKDirectionsRequest</string>
+			<string>Text</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.apple.maps.directionsrequest</string>
+				<string>public.plain-text</string>
 			</array>
 		</dict>
 	</array>
@@ -28,32 +32,21 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>MKDirectionsApplicationSupportedModes</key>
-	<array>
-		<string>MKDirectionsModeBike</string>
-		<string>MKDirectionsModeBus</string>
-		<string>MKDirectionsModeCar</string>
-		<string>MKDirectionsModeFerry</string>
-		<string>MKDirectionsModeOther</string>
-		<string>MKDirectionsModePedestrian</string>
-		<string>MKDirectionsModePlane</string>
-		<string>MKDirectionsModeRideShare</string>
-		<string>MKDirectionsModeStreetCar</string>
-		<string>MKDirectionsModeSubway</string>
-		<string>MKDirectionsModeTaxi</string>
-		<string>MKDirectionsModeTrain</string>
-	</array>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<true/>
 	</dict>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+	<key>UIDocumentInteractionController</key>
 	<true/>
 	<key>UILaunchScreen</key>
 	<dict/>
@@ -64,8 +57,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
