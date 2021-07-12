@@ -342,7 +342,7 @@ struct Successful_Setup: View{
                 
                 Text("Back to Quote")
                     .font(.custom("Gill Sans Light", size: 20))
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50)
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50)
                   .background(Color.gray.opacity(0.15))
                   .padding(EdgeInsets(top: 20, leading: 30, bottom: 5, trailing: 30))
                 

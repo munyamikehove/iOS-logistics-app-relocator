@@ -1548,7 +1548,7 @@ struct Payment_Status_Success: View{
                 .padding(EdgeInsets(top: 150, leading: 10, bottom: 5, trailing: 10))
             
             
-            Text("Deposit payment successful.\n\n$100 CAD was charged to your card.")
+            Text("Payment successful.\n\n $\(String(format: "%.2f", (Double(viewRouter.movingCost)!*1.13))) CAD was charged to your card.")
                 .font(.custom("Courier New", size: 20))
                 .fontWeight(.light)
                 .multilineTextAlignment(.center)

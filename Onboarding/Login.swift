@@ -26,7 +26,7 @@ struct Login: View {
             
             VStack(spacing: 0){
                 
-                Spacer().frame(height: 150)
+                Spacer().frame(height: 100)
                 
                 Text("Relocator")
                     //.font(.system(size: 55))
@@ -45,7 +45,7 @@ struct Login: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading)
                 
-                Spacer().frame(height: 100)
+                Spacer().frame(height: 80)
                 
                 Text("Relocator takes care of all staging, landscaping, renovation, cleaning and moving needed to sell a property.")
                     .font(.custom("Avenir Next Regular", size: 25))

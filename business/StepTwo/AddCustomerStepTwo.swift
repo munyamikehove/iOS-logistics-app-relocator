@@ -238,7 +238,7 @@ struct Customer_Creation_Success: View{
                 
                 Text("Add another customer")
                     .font(.custom("Gill Sans Light", size: 20))
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50)
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50)
                     .background(Color.gray.opacity(0.15))
                     .padding(EdgeInsets(top: 30, leading: 30, bottom: 45, trailing: 30))
                 
@@ -270,6 +270,7 @@ struct Customer_Creation_Success: View{
                     .clipShape(Capsule())
                 
             }
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 50, trailing: 0))
         }
     }
     
